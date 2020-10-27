@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="js/main.js" defer></script>
+</head>
+<body class="bg-blue-900">
+
+<div class="container w-5/12 mx-auto">
+    <div class="flex justify-between items-center p-4 border-2 rounded-2xl">
+        <img src="images/logo.svg" alt="">
+        <div class="bg-white py-5 px-8 text-center rounded-xl">
+            <p class="text-gray-500 leading-none">SCORE</p>
+            <p class="text-4xl font-bold text-gray-700 leading-none pt-2">12</p>
+        </div>
+    </div>
+
+    <div class="mt-16 begin relative">
+        <div class="action p-16 flex justify-between flex-wrap absolute">
+            <img class="border-red-300 box-content bg-white cursor-pointer rounded-full p-10 mr-20 ml-10" data-action="paper" style="width: 70px; height: 70px; border-width: 25px; box-shadow: inset 0 5px lightgrey, 0 5px #C17272;" src="images/icon-paper.svg" alt="">
+            <img class="border-blue-300 box-content bg-white cursor-pointer rounded-full p-10 mr-10" data-action="scissors" style="width: 70px; height: 70px; border-width: 25px; box-shadow: inset 0 5px lightgrey, 0 5px rgb(89, 134, 212);" src="images/icon-scissors.svg" alt="">
+            <img class="border-green-300 box-content bg-white cursor-pointer rounded-full p-12 mx-auto mt-24" data-action="rock" style="width: 54px; height: 54px; border-width: 25px; box-shadow: inset 0 5px lightgrey, 0 5px #52A56E;" src="images/icon-rock.svg" alt="">
+        </div>
+
+        <img class="relative mx-auto" style="z-index:-10; top: 150px; width: 400px;" src="images/bg-triangle.svg" alt="">
+        <p class="ml-auto w-32 mt-64 text-center border-2 text-white py-2">RULES</p>
+
+    </div>
+
+    <div class="result hidden">
+        <div class="action p-16 flex justify-between flex-wrap items-center">
+            <div>
+                <p class="text-center mb-4 text-4xl text-white">YOU</p>
+                <img class="border-red-300 box-content bg-white cursor-pointer rounded-full p-10 mx-auto" data-action="player" style="width: 70px; height: 70px; border-width: 25px; box-shadow: inset 0 5px lightgrey, 0 5px #C17272;" src="images/icon-paper.svg" alt="">
+            </div>
+            <div class="h-56 w-2 bg-white"></div>
+            <div>
+                <p class="text-center mb-4 text-4xl text-white">COMPUTER</p>
+                <img class="border-red-300 box-content bg-white cursor-pointer rounded-full p-10 mx-auto" data-action="computer" style="width: 70px; height: 70px; border-width: 25px; box-shadow: inset 0 5px lightgrey, 0 5px #C17272;" src="images/icon-paper.svg" alt="">
+            </div>
+        </div>
+        <p class="text-center text-white text-4xl">Vous avez gagné !</p>
+    </div>
+
+
+</div>
+
+
+</body>
+</html>
