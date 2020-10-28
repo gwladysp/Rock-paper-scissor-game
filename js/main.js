@@ -2,34 +2,49 @@ const action = document.querySelector('.action')
 const begin = document.querySelector('.begin')
 const result = document.querySelector('.result')
 const retry = document.querySelector("[data-action = 'retry']")
+const restart = document.querySelector("[data-action = 'restart']")
 
 const choices = ['paper', 'scissors', 'rock']
 let playerScore = 0
 let computerScore = 0
 
+if (action && result) {
+    action.addEventListener('click', function(e) {
+        const targetAction = e.target.dataset.action
+        if (targetAction === 'paper' || targetAction === 'rock' || targetAction === 'scissors' ) {
+            const computerAction = randomChoice()
 
-action.addEventListener('click', function(e) {
-    const targetAction = e.target.dataset.action
-    if (targetAction === 'paper' || targetAction === 'rock' || targetAction === 'scissors' ) {
-        const computerAction = randomChoice()
+            resultDisplay("player", targetAction)
+            resultDisplay("computer", computerAction)
+            begin.classList.add('hidden')
+            result.classList.remove('hidden')
 
-        resultDisplay("player", targetAction)
-        resultDisplay("computer", computerAction)
-        begin.classList.add('hidden')
-        result.classList.remove('hidden')
+            const win = winner(targetAction, computerAction)
 
-        const win = winner(targetAction, computerAction)
+            resultDeclaration(win)
+            setScores(win)
+        }
 
-        resultDeclaration(win)
-        setScores(win)
-    }
+    })
+}
 
-})
+if (begin && result && retry) {
+    retry.addEventListener('click', function() {
+        begin.classList.remove('hidden')
+        result.classList.add('hidden')
+    })
 
-retry.addEventListener('click', function() {
-    begin.classList.remove('hidden')
-    result.classList.add('hidden')
-})
+}
+
+if (restart) {
+    restart.addEventListener('click', function() {
+        playerScore = 0
+        computerScore = 0
+        document.querySelector("[data-action='player-score']").textContent = "0"
+        document.querySelector("[data-action='computer-score']").textContent = "0"
+    })
+}
+
 
 function randomChoice() {
     return choices[Math.floor(Math.random()*3)]
@@ -99,11 +114,11 @@ function winner(playerAction, computerAction) {
 function resultDeclaration(result) {
     const phrase = document.querySelector('[data-action="result-phrase"]')
     if (result === "lose") {
-        phrase.textContent = "Vous avez perdu."
+        phrase.textContent = "You lost."
     } else if (result === "equal") {
-        phrase.textContent = "Egalité !"
+        phrase.textContent = "Even!"
     } else if (result === "win") {
-        phrase.textContent = "Vous avez gagné !"
+        phrase.textContent = "You won!"
     }
 }
 
